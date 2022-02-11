@@ -2,7 +2,7 @@
 
 namespace App\Action;
 
-use App\Domain\User\Service\UserCreator;
+use App\Domain\User\Service\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -10,7 +10,7 @@ final class UserCreateAction
 {
     private $userCreator;
 
-    public function __construct(UserCreator $userCreator)
+    public function __construct(UserService $userCreator)
     {
         $this->userCreator = $userCreator;
     }

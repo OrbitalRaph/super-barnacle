@@ -2,25 +2,25 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Repository\UserCreatorRepository;
+use App\Domain\User\Repository\UserServiceRepository;
 use App\Exception\ValidationException;
 
 /**
  * Service.
  */
-final class UserCreator
+final class UserService
 {
     /**
-     * @var UserCreatorRepository
+     * @var UserServiceRepository
      */
     private $repository;
 
     /**
      * The constructor.
      *
-     * @param UserCreatorRepository $repository The repository
+     * @param UserServiceRepository $repository The repository
      */
-    public function __construct(UserCreatorRepository $repository)
+    public function __construct(UserServiceRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -75,4 +75,38 @@ final class UserCreator
             throw new ValidationException('Please check your input', $errors);
         }
     }
+
+	/**
+	 * Fetch users.
+	 */
+	public function fetchUser()
+	{
+		return $this->repository->fetchUser();
+	}
+
+	/**
+	 * Fetch 1 user.
+	 */
+	public function fetchOneUser(int $id)
+	{
+		return $this->repository->fetchOneUser($id);
+	}
+
+	/**
+	 * Delete 1 user.
+	 */
+	public function deleteOneUser( $id ) {
+		return $this->repository->deleteOneUser($id);
+	}
+
+	/**
+	 * Insert user row.
+	 *
+	 * @param array $user The user
+	 *
+	 * @return bool success or failure
+	 */
+	public function modifyUser( array $data ): bool {
+		return $this->repository->modifyUser($data);
+	}
 }

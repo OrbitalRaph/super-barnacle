@@ -1,3 +1,5 @@
+use libapi;
+
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
